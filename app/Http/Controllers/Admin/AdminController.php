@@ -6,36 +6,65 @@ use App\Models\Doctor;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     public function index(){
-        $doctors = Doctor::get();
-        return view('admin.doctor.index',compact('doctors'));
+        if(Auth::id()){
+            if(Auth::user()->usertype == 'admin'){
+                $doctors = Doctor::get();
+                return view('admin.doctor.index',compact('doctors'));
+            }else {
+                return redirect();
+            }
+        }
+        return redirect();
     }
 
     public function create(){
-        return view('admin.doctor.add');
+        if(Auth::id()){
+            if(Auth::user()->usertype == 'admin'){
+                return view('admin.doctor.add');
+            }else {
+                return redirect();
+            }
+        }
+        return redirect();
     }
 
     public function addDoctor(Request $request){
-        $data = $request->validate([
-            'name' => 'required|min:3|max:30|string',
-            'phone' => 'required|min:8|max:15|string',
-            'speciality' => 'required|min:5|max:30',
-            'room' => 'required|min:1|max:50|numeric',
-            'image' => 'required|file|image|mimes:jpg,jpeg,jpeng,png,gif',
-        ]);
-        $Image_Name = $request->file('image')->store('storage');
-        $data['image'] = $Image_Name;
-        
-        Doctor::create($data);
-        return back()->with('success', 'Doctor Added Successfully');
+        if(Auth::id()){
+            if(Auth::user()->usertype == 'admin'){
+                $data = $request->validate([
+                    'name' => 'required|min:3|max:30|string',
+                    'phone' => 'required|min:8|max:15|string',
+                    'speciality' => 'required|min:5|max:30',
+                    'room' => 'required|min:1|max:50|numeric',
+                    'image' => 'required|file|image|mimes:jpg,jpeg,jpeng,png,gif',
+                ]);
+                $Image_Name = $request->file('image')->store('storage');
+                $data['image'] = $Image_Name;
+                
+                Doctor::create($data);
+                return back()->with('success', 'Doctor Added Successfully');
+            }else {
+                return redirect()->back();
+            }
+        }
+        return redirect()->back();
     }
 
     public function editDoctor($id){
-        $doctor = Doctor::findOrFail($id);
-        return view('admin.doctor.edit', compact('doctor')); 
+        if(Auth::id()){
+            if(Auth::user()->usertype == 'admin'){
+                $doctor = Doctor::findOrFail($id);
+                return view('admin.doctor.edit', compact('doctor')); 
+            }else {
+                return redirect();
+            }
+        }
+        return redirect();
     }
 
     public function updateDoctor(Request $request, $id){
@@ -64,8 +93,15 @@ class AdminController extends Controller
     }
 
     public function allAppointments(){
-        $appointments = Appointment::all();
-        return view ('admin.appointments', compact('appointments'));
+        if(Auth::id()){
+            if(Auth::user()->usertype == 'admin'){
+                $appointments = Appointment::all();
+                return view ('admin.appointments', compact('appointments'));
+            }else {
+                return redirect();
+            }
+        }
+        return redirect();
     }
 
     public function approveAppointment($id){

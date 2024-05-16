@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            <img class="mt-2 rounded" width="100" src="{{ asset('assets/img/logo2.jpg') }}" alt="Hospital Logo">
         </x-slot>
 
         <x-validation-errors class="mb-4" />

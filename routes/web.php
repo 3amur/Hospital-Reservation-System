@@ -4,8 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\DoctorController;
-use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SocialiteController;
+use App\Http\Controllers\Admin\AdminController;
 
 // Front Routes
 Route::controller('HomeController')->group(function(){
@@ -33,6 +34,12 @@ Route::name('doctor.')->prefix('admin')->group(function(){
     Route::get('/allAppointments',[AdminController::class, 'allAppointments'])->name('appointments');
     Route::get('/approved/{id}',[AdminController::class, 'approveAppointment'])->name('approved');
     Route::get('/canceled/{id}',[AdminController::class, 'cancelAppointment'])->name('canceled');
+});
+
+// Login user with Socialite (GitHub && Google)
+Route::name('socialite.')->controller(SocialiteController::class)->group(function () {
+    Route::get('{provider}/login','login')->name('login');
+    Route::get('{provider}/redirect', 'redirect')->name('redirect');
 });
 
 Route::middleware([

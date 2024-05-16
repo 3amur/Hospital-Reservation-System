@@ -23,26 +23,31 @@ class HomeController extends Controller
     }
 
     public function storeAppointment(Request $request){
-        $data = $request->validate([
-            'name' => 'required|string|min:3|max:40',
-            'email' => 'required|email|string|min:3|max:30',
-            'date' => 'required|date|string',
-            'doctor' => 'required|string',
-            'phone' => 'required|string|min:8|max:15',
-            'message' => 'required|string|min:10|max:1000',
-        ]);
-
-        if(Auth::id()){
-            $data['user_id'] = Auth::user()->id;
+        if(!Auth::id()){
+            return view('auth.login');
+        }else {
+            $data = $request->validate([
+                'name' => 'required|string|min:3|max:40',
+                'email' => 'required|email|string|min:3|max:30',
+                'date' => 'required|date|string',
+                'doctor' => 'required|string',
+                'phone' => 'required|string|min:8|max:15',
+                'message' => 'required|string|min:10|max:1000',
+            ]);
+    
+            if(Auth::id()){
+                $data['user_id'] = Auth::user()->id;
+            }
+    
+            Appointment::create($data);
+            return redirect()->back()->with('message','Appointment Created Successfully, We will Contact You Soon!');
         }
-
-        Appointment::create($data);
-        return redirect()->back()->with('message','Appointment Created Successfully, We will Contact You Soon!');
     }
 
     public function showAppointment(){
         if(Auth::id()) {
-            $appointments = Appointment::get();
+            $userid = Auth::user()->id;
+            $appointments = Appointment::where('user_id',$userid)->get();
             return view('user/layouts/all_appointments', compact('appointments'));
         } else {
             return redirect()->back();
