@@ -9,9 +9,9 @@ use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\Admin\AdminController;
 
 // Front Routes
-Route::controller('HomeController')->group(function(){
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::name('front.')->group(function(){
     Route::get('/home', [HomeController::class, 'redirect']);
+    Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors');
     Route::get('/contact-us', [ContactController::class, 'index'])->name('contact');
@@ -24,9 +24,11 @@ Route::controller('HomeController')->group(function(){
 });
 
 // Admin Routes
-Route::name('doctor.')->prefix('admin')->group(function(){
+Route::prefix('admin')->name('doctor.')->group(function(){
     Route::get('/doctors', [AdminController::class, 'index'])->name('all');
     Route::get('/create', [AdminController::class, 'create'])->name('create');
+    Route::get('/messages', [AdminController::class, 'contact'])->name('contact');
+    Route::get('/deleteMessage/{id}', [AdminController::class, 'deleteMessage'])->name('deleteMessage');
     Route::post('/add_doctor',[AdminController::class, 'addDoctor'])->name('addDoctor');
     Route::get('/editDoctor/{id}', [AdminController::class, 'editDoctor'])->name('edit');
     Route::post('/updateDoctor/{id}',[AdminController::class, 'updateDoctor'])->name('update');

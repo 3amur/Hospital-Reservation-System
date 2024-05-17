@@ -4,7 +4,7 @@
         <div class="container text-center wow fadeInUp">
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('front.home') }}">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">About</li>
                 </ol>
             </nav>
@@ -50,16 +50,10 @@
             <div class="col-lg-8 wow fadeInUp">
                 <h1 class="text-center mb-3">Welcome to Your Health Center</h1>
                 <div class="text-lg">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt neque sit, explicabo vero nulla
-                        animi nemo quae cumque, eaque pariatur eum ut maxime! Tenetur aperiam maxime iure explicabo aut
-                        consequuntur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt neque sit,
-                        explicabo vero nulla animi nemo quae cumque, eaque pariatur eum ut maxime! Tenetur aperiam
-                        maxime iure explicabo aut consequuntur.</p>
-                    <p>Expedita iusto sunt beatae esse id nihil voluptates magni, excepturi distinctio impedit illo,
-                        incidunt iure facilis atque, inventore reprehenderit quidem aliquid recusandae. Lorem ipsum
-                        dolor sit amet consectetur adipisicing elit. Laudantium quod ad sequi atque accusamus deleniti
-                        placeat dignissimos illum nulla voluptatibus vel optio, molestiae dolore velit iste maxime,
-                        nobis odio molestias!</p>
+                    <p>Our goal is always to fully cover the treatment of our patients as the largest and most important private hospital group in Egypt. So we began to improve our services and quality, improve the administrative aspect of supervising operations, improve the experience of our patients, and provide efficiency in general, which made us one of the first health care providers in Egypt .</p>
+                    <p>Our great success story is due to integrity and integrity in every decision made, which is for the benefit of our patients
+                        We are truly able to provide high-quality integrated health care to our patients in accordance with international standards
+                        The mission of Heaven Hospitals Group is to constantly strive to benefit from our medical team and consultants to provide the best health care in Egypt!</p>
                 </div>
             </div>
                 {{-- Our Doctors --}}

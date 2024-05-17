@@ -13,13 +13,8 @@ class HomeController extends Controller
 {   
     public  function index()
     {
-        if(Auth::id()){
-            $doctors = Doctor::all();
-            return view('user.home',compact('doctors'));
-        }else{
-            $doctors = Doctor::all();
-            return view('user.home',compact('doctors'));
-        }
+        $doctors = Doctor::all();
+        return view('user.home',compact('doctors'));
     }
 
     public function storeAppointment(Request $request){
@@ -40,7 +35,7 @@ class HomeController extends Controller
             }
     
             Appointment::create($data);
-            return redirect()->back()->with('message','Appointment Created Successfully, We will Contact You Soon!');
+            return redirect()->back()->with('message','Appointment Created Successfully');
         }
     }
 
@@ -74,11 +69,8 @@ class HomeController extends Controller
             return redirect()->back();
         }
     }
-    public function logout(Request $request)
-    {
-        if($request->user()->usertype == 'user'){
+    public function logout(Request $request){
         Auth::logout();
-        return redirect()->route('home');
-        }
+        return redirect()->route('front.home');
     }
 }

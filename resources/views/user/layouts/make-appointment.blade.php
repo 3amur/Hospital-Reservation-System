@@ -1,7 +1,7 @@
 <div class="page-section">
     <div class="container">
       <h1 class="text-center wow fadeInUp">Make an Appointment</h1>
-      <form class="main-form" action="{{ route('appointment') }}" method="POST">
+      <form class="main-form" action="{{ route('front.appointment') }}" method="POST">
         @csrf
 
         @if (session()->has('message'))

@@ -24,7 +24,7 @@
                 <th>{{ $appointment->status }}</th>
                 <th>
                 <a class="text-danger" onclick="return confirm('Are You Sure You Want To Delete This Appointment !')" 
-                    href="{{ route('cancel_Appointment', $appointment->id ) }}"> Cancel </a>
+                    href="{{ route('front.cancel_Appointment', $appointment->id ) }}"> Cancel </a>
                 </th>
               </tr>
           @endforeach

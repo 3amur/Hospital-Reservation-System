@@ -11,32 +11,26 @@
           <div class="col-md-12 mx-auto grid-margin">
             <div class="mt-3 card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title text-center">View All Doctors</h3>
+                  <h3 class="card-title text-center">View All Messages</h3>
                 </div>
               <table class="table table-bordered text-center">
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Phone</th>
-                    <th>Dr:Name</th>
-                    <th>Date</th>
+                    <th>Email</th>
+                    <th>Subject</th>
                     <th>Message</th>
-                    <th>Status</th>
-                    <th>Approved</th>
-                    <th>Canceled</th>
+                    <th>Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($appointments as $appointment)
+                    @foreach ($messages as $message)
                         <tr>
-                            <td>{{ $appointment->name }}</td>
-                            <td>{{ $appointment->phone }}</td>
-                            <td>{{ $appointment->doctor }}</td>
-                            <td>{{ $appointment->date }}</td>
-                            <td>{{ Str::limit($appointment->message, '42') }}</td>
-                            <td>{{ $appointment->status }}</td>
-                            <td><a class="text-success" href="{{ route('doctor.approved', $appointment->id) }}">Approved</a></td>
-                            <td><a class="text-danger" href="{{ route('doctor.canceled', $appointment->id) }}">Canceled</a></td>
+                            <td>{{ $message->name }}</td>
+                            <td>{{ $message->email }}</td>
+                            <td>{{ $message->subject }}</td>
+                            <td>{{ $message->message }}</td>
+                            <td><a class="text-danger" href="{{ route('doctor.deleteMessage', $message->id) }}">Delete</a></td>
                         </tr>
                     @endforeach
                 </tbody>

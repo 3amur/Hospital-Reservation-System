@@ -26,6 +26,6 @@ class SocialiteController extends Controller
 
         Auth::login($user,true);
 
-        return to_route('home');
+        return to_route('front.home');
     }
 }

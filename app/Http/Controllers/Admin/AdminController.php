@@ -6,6 +6,7 @@ use App\Models\Doctor;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -117,6 +118,18 @@ class AdminController extends Controller
         $data->status = 'Canceled';
 
         $data->save();
+        return redirect()->back();
+    }
+
+    public function contact(){
+        $messages = Contact::all();
+        return view('admin.contact-messages', compact('messages'));
+    }
+
+    public function deleteMessage($id){
+        $messages = Contact::findOrFail($id);
+        $messages->delete();
+        
         return redirect()->back();
     }
 }

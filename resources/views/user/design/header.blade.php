@@ -72,23 +72,23 @@
                 <div class="collapse navbar-collapse" id="navbarSupport">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('home') }}">Home</a>
+                            <a class="nav-link" href="{{ route('front.home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('about') }}">About</a>
+                            <a class="nav-link" href="{{ route('front.about') }}">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('doctors') }}">Doctors</a>
+                            <a class="nav-link" href="{{ route('front.doctors') }}">Doctors</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
+                            <a class="nav-link" href="{{ route('front.contact') }}">Contact Us</a>
                         </li>
                         @if (Route::has('login'))
                             @auth
                             <li class="nav-item">
-                                <a class="nav-link bg-primary rounded mr-5 text-white" href="{{ route('allappointment') }}">My Appointment</a>
+                                <a class="nav-link bg-primary rounded mr-5 text-white" href="{{ route('front.allappointment') }}">My Appointment</a>
                             </li>
-                             <a href="{{ route('user.logout') }}">Logout</a>
+                             <a href="{{ route('front.user.logout') }}">Logout</a>
                             @else
                                 <li class="nav-item">
                                     <a class="btn btn-primary ml-lg-3" href="{{ route('login') }}">Login</a>

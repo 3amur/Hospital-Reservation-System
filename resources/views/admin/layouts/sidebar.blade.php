@@ -27,7 +27,7 @@
         <li class="nav-item menu-items">
             <a class="nav-link" href="{{ route('doctor.create') }}">
                 <span class="menu-icon">
-                    <i class="mdi mdi-file-document-box"></i>
+                    <i class="mdi mdi-account-multiple-plus"></i>
                 </span>
                 <span class="menu-title">Add Doctors</span>
             </a>
@@ -36,7 +36,7 @@
         <li class="nav-item menu-items">
             <a class="nav-link" href="{{ route('doctor.all') }}">
                 <span class="menu-icon">
-                    <i class="mdi mdi-file-document-box"></i>
+                    <i class="mdi mdi-content-save-all"></i>
                 </span>
                 <span class="menu-title">All Doctors</span>
             </a>
@@ -45,9 +45,18 @@
         <li class="nav-item menu-items">
             <a class="nav-link" href="{{ route('doctor.appointments') }}">
                 <span class="menu-icon">
-                    <i class="mdi mdi-file-document-box"></i>
+                    <i class="mdi mdi-pulse"></i>
                 </span>
                 <span class="menu-title">All Appointments</span>
+            </a>
+        </li>
+        {{-- View All ContactMessages --}}
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="{{ route('doctor.contact') }}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-comment"></i>
+                </span>
+                <span class="menu-title">Contact Messages</span>
             </a>
         </li>
     </ul>

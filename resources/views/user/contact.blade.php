@@ -16,11 +16,11 @@
 
 <div class="page-section">
     <div class="container">
-        <h1 class="text-center wow fadeInUp">Get in Touch</h1>
         @if(session()->has('success'))
             <h1 class="text-center text-success">{{ session()->get('success')}}</h1>
         @endif
-        <form class="contact-form mt-5" action="{{ route('contact.sendMessage') }}" method="POST">
+        <h1 class="text-center wow fadeInUp">Get in Touch</h1>
+        <form class="contact-form mt-5" action="{{ route('front.contact.sendMessage') }}" method="POST">
             @csrf
             <div class="row mb-3">
                 <div class="col-sm-6 py-2 wow fadeInLeft">
